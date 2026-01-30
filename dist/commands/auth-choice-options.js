@@ -63,3 +63,5 @@ export function buildAuthChoiceGroups(params) {
         : undefined;
     return { groups, skipOption };
 }
+
+// commit 2
