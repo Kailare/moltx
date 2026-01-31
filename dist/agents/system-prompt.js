@@ -97,7 +97,7 @@ function buildDocsSection(params) {
         "## Documentation",
         `Grawke docs: ${docsPath}`,
         "Mirror: https://docs.clawd.bot",
-        "Source: https://github.com/clawdbot/clawdbot",
+        "Source: https://github.com/Kailare/grawke",
         "Community: https://discord.com/invite/clawd",
         "Find new skills: https://clawdhub.com",
         "For Grawke behavior, commands, config, or architecture: consult local docs first.",

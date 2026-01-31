@@ -61,7 +61,7 @@ const UPDATE_QUIPS = [
     "Version bump! Same chaos energy, fewer crashes (probably).",
 ];
 const MAX_LOG_CHARS = 8000;
-const GRAWKE_REPO_URL = "https://github.com/clawdbot/clawdbot.git";
+const GRAWKE_REPO_URL = "https://github.com/Kailare/grawke.git";
 const DEFAULT_GIT_DIR = path.join(os.homedir(), "grawke");
 function normalizeTag(value) {
     if (!value)
