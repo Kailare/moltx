@@ -284,6 +284,26 @@ try {
 
   if (!skip) {
     main();
+    // Patch xAI model routing for tool calling support
+    try {
+      const modelsPath = path.join(getRepoRoot(), "node_modules/@mariozechner/pi-ai/dist/models.generated.js");
+      if (fs.existsSync(modelsPath)) {
+        let content = fs.readFileSync(modelsPath, "utf-8");
+        let patched = false;
+        // Fix grok-3: route to api.x.ai with openai-completions (not Vercel/anthropic-messages)
+        const oldRouting = 'api: "anthropic-messages",\n            provider: "vercel-ai-gateway",\n            baseUrl: "https://ai-gateway.vercel.sh",';
+        const newRouting = 'api: "openai-completions",\n            provider: "xai",\n            baseUrl: "https://api.x.ai/v1",';
+        if (content.includes(oldRouting)) {
+          content = content.replaceAll(oldRouting, newRouting);
+          fs.writeFileSync(modelsPath, content);
+          console.log("[postinstall] Patched xAI model routing for tool calling");
+          patched = true;
+        }
+        if (!patched) console.log("[postinstall] xAI models already patched");
+      }
+    } catch (e) {
+      console.warn("[postinstall] Could not patch xAI models:", e.message);
+    }
   }
 } catch (err) {
   console.error(String(err));
