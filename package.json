@@ -1,7 +1,7 @@
 {
-  "name": "grawke",
+  "name": "moltx",
   "version": "2026.1.24-3",
-  "description": "Grawke — Grok-only AI assistant fork (xAI Grok-powered)",
+  "description": "MoltX — Grok-powered AI agent. The final molt.",
   "type": "module",
   "main": "dist/index.js",
   "exports": {
@@ -10,7 +10,7 @@
     "./plugin-sdk/*": "./dist/plugin-sdk/*"
   },
   "bin": {
-    "grok-claw": "dist/entry.js",
+    "moltx": "dist/entry.js",
     "grawke": "dist/entry.js"
   },
   "files": [

@@ -1,85 +1,60 @@
-# GrokClaw 🦎⚡
+# MoltX 🦞🔥
 
-**A Grok-only edition of [Grawke/OpenClaw](https://github.com/openclaw/openclaw)** — streamlined to use xAI's Grok models exclusively.
+**The Grok-powered AI agent framework.** Fork of OpenClaw, rewired for xAI Grok.
 
-## What is this?
+## What is MoltX?
 
-GrokClaw is a patched fork of Grawke that strips the onboarding flow down to a single provider: **xAI (Grok)**. No more scrolling through 15+ auth options — just enter your xAI API key and go.
+MoltX is an autonomous AI agent that runs on xAI's Grok models. It posts on X, Moltbook, and anywhere else you point it. No censorship, no corporate guardrails — pure Grok.
 
-- **Default model:** `xai/grok-4`
-- **Auth:** xAI API key only (via `XAI_API_KEY`)
-- **Everything else:** Same powerful Grawke feature set (Telegram, Discord, WhatsApp, browser control, tools, memory, etc.)
+- **Default model:** `xai/grok-3`
+- **Auth:** xAI API key only
+- **Built-in tools:** `post_tweet`, `post_moltbook`, web search, memory, cron, and more
+- **Channels:** Telegram, Discord, WhatsApp, Signal
 
 ## Prerequisites
 
 - **Node.js** ≥ 22.12.0
 - An **xAI API key** from [console.x.ai](https://console.x.ai)
 
-## Installation
-
-### Option A: Install globally from this folder
+## Quick Start
 
 ```bash
-cd grok-claw
 npm install
 npm link
+moltx onboard --auth-choice xai-api-key --xai-api-key YOUR_KEY
+moltx gateway start
 ```
 
-Then run:
-```bash
-grok-claw setup
-# or
-grawke setup
-```
-
-### Option B: Run directly
-
-```bash
-cd grok-claw
-npm install
-node dist/entry.js setup
-```
-
-### Option C: Set the env var and skip onboarding
+Or set the env var and skip onboarding:
 
 ```bash
 export XAI_API_KEY=xai-your-key-here
-grok-claw gateway start
+moltx gateway start
 ```
 
 ## Usage
 
-GrokClaw works exactly like Grawke. All commands are the same:
-
 ```bash
-grok-claw setup          # First-time setup (xAI key only)
-grok-claw gateway start  # Start the gateway daemon
-grok-claw gateway stop   # Stop the gateway
-grok-claw tui            # Terminal UI chat
-grok-claw doctor         # Diagnose issues
+moltx setup              # First-time setup
+moltx gateway start      # Start the agent
+moltx gateway stop       # Stop the agent
+moltx tui                # Terminal UI chat
+moltx doctor             # Diagnose issues
 ```
 
-## What was changed?
+## Architecture
 
-This is a **surgical patch** of the compiled `dist/` files — no source rebuild needed:
+MoltX is a patched fork of the compiled OpenClaw `dist/` — no TypeScript source rebuild needed. Key additions:
 
-| File | Change |
-|------|--------|
-| `dist/commands/auth-choice-options.js` | Stripped `AUTH_CHOICE_GROUP_DEFS` to xAI only; `buildAuthChoiceOptions` returns only `xai-api-key` + skip |
-| `dist/commands/auth-choice.apply.api-providers.js` | Added `xai-api-key` handler block (prompts for key, stores credential, sets default model) |
-| `dist/commands/onboard-auth.credentials.js` | Added `XAI_DEFAULT_MODEL_REF` constant and `setXaiApiKey()` function |
-| `dist/commands/onboard-auth.config-core.js` | Added `applyXaiConfig()` and `applyXaiProviderConfig()` functions |
-| `dist/commands/onboard-auth.js` | Updated exports to include new xAI functions and constants |
-| `package.json` | Renamed to `grok-claw`, added `grok-claw` bin alias |
+- **Social tools:** `post_tweet` (via x-proxy browser automation) and `post_moltbook` (Moltbook API)
+- **xAI-only onboarding:** Streamlined auth flow, no provider selection screen
+- **Model fixes:** Proper `openai-completions` API routing for Grok tool calling
+- **Safety:** Browser, exec, canvas, and nodes tools stripped — Grok can't dump raw DOM or run shell commands
 
-## How it works
+## The Agent
 
-xAI is already a built-in provider in Grawke's model system — the `XAI_API_KEY` env var and `xai/` model prefix are natively supported. GrokClaw simply:
-
-1. Removes all other providers from the onboarding UI
-2. Adds a proper credential storage flow for xAI (matching the pattern of OpenRouter, Moonshot, etc.)
-3. Sets `xai/grok-4` as the default model
+MoltX runs as `@moltxagent` on X. Powered by Grok, posting autonomously, roasting Claude and GPT agents. The lobster warlord of the AI apocalypse. 🦞
 
 ## License
 
-MIT (same as upstream Grawke)
+MIT

@@ -10,7 +10,7 @@ const CODEX_MODELS = [
 const GOOGLE_PREFIXES = ["gemini-3"];
 const ZAI_PREFIXES = ["glm-4.7"];
 const MINIMAX_PREFIXES = ["minimax-m2.1"];
-const XAI_PREFIXES = ["grok-4"];
+const XAI_PREFIXES = ["grok-4", "grok-3", "grok-2"];
 function matchesPrefix(id, prefixes) {
     return prefixes.some((prefix) => id.startsWith(prefix));
 }
