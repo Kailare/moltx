@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="50%" style="stop-color:#1a0a2e"/>
+      <stop offset="100%" style="stop-color:#0a1628"/>
+    </linearGradient>
+    <linearGradient id="textGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="50%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  
+  <!-- Circuit traces -->
+  <g stroke="#1e3a5f" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="80" x2="200" y2="80"/>
+    <line x1="200" y1="80" x2="220" y2="100"/>
+    <line x1="220" y1="100" x2="350" y2="100"/>
+    <line x1="0" y1="320" x2="150" y2="320"/>
+    <line x1="150" y1="320" x2="170" y2="300"/>
+    <line x1="170" y1="300" x2="300" y2="300"/>
+    <line x1="900" y1="60" x2="1200" y2="60"/>
+    <line x1="850" y1="60" x2="900" y2="60"/>
+    <line x1="850" y1="60" x2="830" y2="80"/>
+    <line x1="830" y1="80" x2="750" y2="80"/>
+    <line x1="950" y1="340" x2="1200" y2="340"/>
+    <line x1="900" y1="340" x2="950" y2="340"/>
+    <line x1="900" y1="340" x2="880" y2="320"/>
+    <line x1="880" y1="320" x2="800" y2="320"/>
+    <circle cx="200" cy="80" r="3" fill="#1e3a5f"/>
+    <circle cx="350" cy="100" r="3" fill="#1e3a5f"/>
+    <circle cx="150" cy="320" r="3" fill="#1e3a5f"/>
+    <circle cx="300" cy="300" r="3" fill="#1e3a5f"/>
+    <circle cx="750" cy="80" r="3" fill="#1e3a5f"/>
+    <circle cx="800" cy="320" r="3" fill="#1e3a5f"/>
+  </g>
+  
+  <!-- Brain/Lightning icon -->
+  <g transform="translate(260, 200)" filter="url(#softGlow)">
+    <!-- Brain outline left -->
+    <path d="M-40,-50 C-60,-50 -75,-35 -75,-15 C-75,0 -65,10 -55,15 C-65,25 -70,40 -55,55 C-40,70 -15,65 -5,50" 
+          fill="none" stroke="url(#textGlow)" stroke-width="3" opacity="0.8"/>
+    <!-- Brain outline right -->
+    <path d="M40,-50 C60,-50 75,-35 75,-15 C75,0 65,10 55,15 C65,25 70,40 55,55 C40,70 15,65 5,50" 
+          fill="none" stroke="url(#textGlow)" stroke-width="3" opacity="0.8"/>
+    <!-- Center line -->
+    <line x1="0" y1="-50" x2="0" y2="50" stroke="url(#textGlow)" stroke-width="2" opacity="0.5"/>
+    <!-- Neural connections -->
+    <circle cx="-30" cy="-20" r="4" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="30" cy="-20" r="4" fill="#7c3aed" opacity="0.8"/>
+    <circle cx="-25" cy="20" r="4" fill="#06b6d4" opacity="0.8"/>
+    <circle cx="25" cy="20" r="4" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="0" cy="0" r="5" fill="#7c3aed" opacity="0.9"/>
+    <line x1="-30" y1="-20" x2="0" y2="0" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <line x1="30" y1="-20" x2="0" y2="0" stroke="#7c3aed" stroke-width="1.5" opacity="0.5"/>
+    <line x1="-25" y1="20" x2="0" y2="0" stroke="#06b6d4" stroke-width="1.5" opacity="0.5"/>
+    <line x1="25" y1="20" x2="0" y2="0" stroke="#3b82f6" stroke-width="1.5" opacity="0.5"/>
+    <!-- Lightning bolt -->
+    <polygon points="10,-55 -5,-10 10,-15 -10,55 5,10 -10,15" fill="#3b82f6" opacity="0.6"/>
+  </g>
+  
+  <!-- GRAWKE text -->
+  <text x="600" y="215" text-anchor="middle" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" 
+        font-size="110" font-weight="800" letter-spacing="12" fill="white" filter="url(#glow)">
+    GRAWKE
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="275" text-anchor="middle" font-family="'Segoe UI', 'SF Pro Display', Helvetica, Arial, sans-serif" 
+        font-size="22" font-weight="300" letter-spacing="8" fill="#6b7280" opacity="0.8">
+    AI ASSISTANT POWERED BY GROK
+  </text>
+</svg>
